@@ -24,17 +24,25 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
 
-tasks.getByName<Test>("test") {
-    useJUnitPlatform()
+val test by tasks.getting(Test::class) {
+    useJUnitPlatform { }
 }
 
-tasks.register<JacocoReport>("jacocoTestReportZ") {
-    // Adjust paths as needed
-    classDirectories.setFrom(files(classDirectories.files))
-    sourceDirectories.setFrom(files("${project.projectDir}/src/main/java")) // Location of execution data file
+tasks.jacocoTestReport {
     reports {
-        xml.required.set(true) // Enable XML report generation
-        //html.setEnabled(false) // Optional: disable HTML report (if not needed)
+        xml.isEnabled = true
+        csv.isEnabled = false
+        html.isEnabled = false
+        html.destination = file("$buildDir/reports/coverage")
     }
 }
 
+tasks.jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = "0.9".toBigDecimal()
+            }
+        }
+    }
+}

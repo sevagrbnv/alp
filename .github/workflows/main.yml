@@ -21,11 +21,10 @@ jobs:
       - name: Запуск тестов и генерация JaCoCo отчетов
         run: |
           ./gradlew test jacocoTestReport jacocoTestCoverageVerification
-          mv ./build/reports/jacoco/test/jacocoTestReport.xml ./jacoco.xml
 
       - name: Отправка отчета на Coveralls
         uses: coverallsapp/github-action@v2.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-coverage: ./jacoco.xml
+          path-to-coverage: ./build/reports/jacoco/test/jacocoTestReport.xml
 

@@ -1,13 +1,13 @@
 plugins {
     id("java")
-    id ("jacoco")
+    id("jacoco")
 }
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
 
 jacoco {
-    toolVersion = "0.8.7"
+    toolVersion = "0.8.12"
 }
 
 tasks.jacocoTestReport {

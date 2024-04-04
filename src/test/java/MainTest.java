@@ -12,13 +12,13 @@ public class MainTest {
         assertEquals(expected, actual);
     }
 
-//    @Test
-//    public void testWithoutPlusAndOtherCharacters() {
-//        String actual = Main.modifyPhoneNumbers("Олег 9999999999", "+49");
-//        String expected = "Олег +49 (999) 999-99-99";
-//        assertEquals(expected, actual);
-//    }
-//
+    @Test
+    public void testWithoutPlusAndOtherCharacters() {
+        String actual = Main.modifyPhoneNumbers("Олег 9999999999", "+49");
+        String expected = "Олег +49 (999) 999-99-99";
+        assertEquals(expected, actual);
+    }
+
 //    @Test
 //    public void testPhoneNotFound() {
 //        String actual = Main.modifyPhoneNumbers("Я пишу тесты уже 99999+ раз", "+1");

@@ -8,7 +8,7 @@ version = "1.0-SNAPSHOT"
 
 jacoco {
     toolVersion = "0.8.12"
-    reportsDir = file("$buildDir/jacoco") // Customize report directory (optional)
+    //reportsDirectory = file("$buildDir/jacoco") // Customize report directory (optional)
 }
 
 tasks.test {
@@ -33,9 +33,8 @@ tasks.register<JacocoReport>("jacocoTestReportZ") {
     classDirectories.setFrom(files(classDirectories.files))
     sourceDirectories.setFrom(files("${project.projectDir}/src/main/java")) // Location of execution data file
     reports {
-        xml.setEnabled(true) // Enable XML report generation
-        html.setEnabled(false) // Optional: disable HTML report (if not needed)
-        html.destination = file("$buildDir/reports/coverage")
+        xml.required.set(true) // Enable XML report generation
+        //html.setEnabled(false) // Optional: disable HTML report (if not needed)
     }
 }
 

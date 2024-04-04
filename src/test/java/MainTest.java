@@ -26,17 +26,17 @@ public class MainTest {
         assertEquals(expected, actual);
     }
 
-//    @Test
-//    public void testWithoutPlusWithSpaces() {
-//        String actual = Main.modifyPhoneNumbers("Настя 8 800 555 35 35", "+9");
-//        String expected = "Настя +9 (800) 555-35-35";
-//        assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void testWithPlusAndDashes() {
-//        String actual = Main.modifyPhoneNumbers("Георгий +4-800-555-35-35", "+1");
-//        String expected = "Георгий +1 (800) 555-35-35";
-//        assertEquals(expected, actual);
-//    }
+    @Test
+    public void testWithoutPlusWithSpaces() {
+        String actual = Main.modifyPhoneNumbers("Настя 8 800 555 35 35", "+9");
+        String expected = "Настя +9 (800) 555-35-35";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testWithPlusAndDashes() {
+        String actual = Main.modifyPhoneNumbers("Георгий +4-800-555-35-35", "+1");
+        String expected = "Георгий +1 (800) 555-35-35";
+        assertEquals(expected, actual);
+    }
 }

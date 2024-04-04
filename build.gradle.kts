@@ -1,6 +1,6 @@
 plugins {
-    id("java")
-    id("jacoco")
+    java
+    jacoco
 }
 
 group = "org.example"
@@ -8,14 +8,10 @@ version = "1.0-SNAPSHOT"
 
 jacoco {
     toolVersion = "0.8.12"
-}
-
-tasks.jacocoTestReport {
-    dependsOn("test")
+    reportsDir = file("$buildDir/reports/jacoco")
 }
 
 tasks.test {
-    useJUnitPlatform()
     finalizedBy("jacocoTestReport")
 }
 
@@ -31,3 +27,4 @@ dependencies {
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
+

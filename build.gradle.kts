@@ -8,19 +8,7 @@ version = "1.0-SNAPSHOT"
 
 jacoco {
     toolVersion = "0.8.12"
-    reportsDir = file("$buildDir/reports/jacoco")
-}
-
-val jacocoTestReportZ by tasks.registering(JacocoReport::class) {
-    dependsOn(tasks.test)
-    reports {
-        xml.isEnabled = true
-        html.isEnabled = false
-        csv.isEnabled = false
-    }
-    executionData(tasks.test.get().outputs.files)
-    classDirectories.setFrom(files(sourceSets.main.get().output.classesDirs))
-    sourceDirectories.setFrom(files(sourceSets.main.get().allSource.srcDirs))
+    reportsDir = file("$buildDir/jacoco") // Customize report directory (optional)
 }
 
 tasks.test {
@@ -39,3 +27,14 @@ dependencies {
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
+
+tasks.register<JacocoReport>("jacocoTestReportZ") {
+    // Adjust paths as needed
+    classDirectories.setFrom(files(classDirectories.files))
+    sourceDirectories.setFrom(files("${project.projectDir}/src/main/java")) // Location of execution data file
+    reports {
+        xml.setEnabled(true) // Enable XML report generation
+        html.setEnabled(false) // Optional: disable HTML report (if not needed)
+    }
+}
+

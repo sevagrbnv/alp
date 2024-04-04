@@ -19,13 +19,13 @@ public class MainTest {
         assertEquals(expected, actual);
     }
 
-//    @Test
-//    public void testPhoneNotFound() {
-//        String actual = Main.modifyPhoneNumbers("Я пишу тесты уже 99999+ раз", "+1");
-//        String expected = "Я пишу тесты уже 99999+ раз";
-//        assertEquals(expected, actual);
-//    }
-//
+    @Test
+    public void testPhoneNotFound() {
+        String actual = Main.modifyPhoneNumbers("Я пишу тесты уже 99999+ раз", "+1");
+        String expected = "Я пишу тесты уже 99999+ раз";
+        assertEquals(expected, actual);
+    }
+
 //    @Test
 //    public void testWithoutPlusWithSpaces() {
 //        String actual = Main.modifyPhoneNumbers("Настя 8 800 555 35 35", "+9");

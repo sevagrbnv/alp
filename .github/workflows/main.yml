@@ -17,7 +17,22 @@ jobs:
 
       - name: Запуск тестов
         run: |
-          ./gradlew test
+          ./gradlew test --html
 
       - name: Загрузка Coveralls
         uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coveralls-token: ${{ secrets.COVERALLS_TOKEN }}
+          path-to-coverage: ./build/reports/jacoco/test/jacocoTestReport.xml
+          parallel-coverage: true
+          include-test-code: true
+          verbose: true
+          enable-html-report: true
+          html-report-path: ./build/reports/jacoco/test/html
+
+      - name: Публикация HTML-отчета (необязательно)
+        uses: actions/upload-artifact@v2
+        with:
+          name: JaCoCo HTML Coverage Report
+          path: ./build/reports/jacoco/test/html

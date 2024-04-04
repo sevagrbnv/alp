@@ -15,7 +15,7 @@ val jacocoTestReportZ by tasks.registering(JacocoReport::class) {
     dependsOn(tasks.test)
     reports {
         xml.isEnabled = true
-        html.isEnabled = true
+        html.isEnabled = false
         csv.isEnabled = false
     }
     executionData(tasks.test.get().outputs.files)

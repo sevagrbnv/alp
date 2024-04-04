@@ -1,12 +1,6 @@
-name: CI/CD with Gradle
+on: ["push", "pull_request"]
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+name: Тестирование Coveralls
 
 jobs:
   build:

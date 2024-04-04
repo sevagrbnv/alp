@@ -8,11 +8,6 @@ version = "1.0-SNAPSHOT"
 
 jacoco {
     toolVersion = "0.8.12"
-    //reportsDirectory = file("$buildDir/jacoco") // Customize report directory (optional)
-}
-
-tasks.test {
-    finalizedBy("jacocoTestReport")
 }
 
 repositories {

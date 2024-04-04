@@ -1,15 +1,18 @@
-on: ["push", "pull_request"]
+name: CI/CD with Gradle
 
-name: Тестирование Coveralls
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-
   build:
-    name: Сборка
     runs-on: ubuntu-latest
     steps:
-
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - name: Установить Gradle
         uses: gradle/wrapper-validation-action@v1
@@ -18,13 +21,9 @@ jobs:
         run: |
           chmod +x ./gradlew
 
-      - name: Установить зависимости
+      - name: Запуск тестов
         run: |
-          ./gradlew install
-
-      - name: Запуск тестов с покрытием
-        run: |
-          ./gradlew test --coverage
+          ./gradlew test
 
       - name: Загрузка Coveralls
         uses: coverallsapp/github-action@v2

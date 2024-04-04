@@ -24,13 +24,7 @@ jobs:
       - name: Генерация JaCoCo отчетов
         run: ./gradlew jacocoTestReport
 
-      - name: Загрузка Coveralls
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./build/reports/jacoco/test/lcov.info
-
-      - name: Публикация HTML-отчета (необязательно)
+      - name: Публикация HTML-отчета
         uses: actions/upload-artifact@v2
         with:
           name: JaCoCo HTML Coverage Report

@@ -17,7 +17,7 @@ jobs:
 
       - name: Запуск тестов
         run: |
-          ./gradlew ./src/test/java
+          ./gradlew test
 
       - name: Загрузка Coveralls
         uses: coverallsapp/github-action@v2

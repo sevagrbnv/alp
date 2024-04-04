@@ -11,6 +11,18 @@ jacoco {
     reportsDir = file("$buildDir/reports/jacoco")
 }
 
+val jacocoTestReportZ by tasks.registering(JacocoReport::class) {
+    dependsOn(tasks.test)
+    reports {
+        xml.isEnabled = true
+        html.isEnabled = true
+        csv.isEnabled = false
+    }
+    executionData(tasks.test.get().outputs.files)
+    classDirectories.setFrom(files(sourceSets.main.get().output.classesDirs))
+    sourceDirectories.setFrom(files(sourceSets.main.get().allSource.srcDirs))
+}
+
 tasks.test {
     finalizedBy("jacocoTestReport")
 }
@@ -27,4 +39,3 @@ dependencies {
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
-

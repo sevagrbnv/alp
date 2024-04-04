@@ -35,6 +35,7 @@ tasks.register<JacocoReport>("jacocoTestReportZ") {
     reports {
         xml.setEnabled(true) // Enable XML report generation
         html.setEnabled(false) // Optional: disable HTML report (if not needed)
+        html.destination = file("$buildDir/reports/coverage")
     }
 }
 
